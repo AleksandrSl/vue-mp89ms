@@ -44,7 +44,7 @@ jobs:
     needs: [ run-eslint ]
     steps:
       - run: |
-          result="${{ needs.build.result }}"
+          result="${{ needs.run-eslint.result }}"
           if [[ $result == "success" || $result == "skipped" ]]; then
             exit 0
           else
