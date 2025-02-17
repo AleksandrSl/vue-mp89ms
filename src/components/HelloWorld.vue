@@ -20,6 +20,7 @@
     <template v-for="i in [1, 2, 3]" :key="i">
       <div>{{ i }}</div>
     </template>
+    test
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
