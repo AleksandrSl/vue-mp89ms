@@ -38,13 +38,14 @@ jobs:
         run: npm run lint ${{ matrix.subpackage }}
 
   results:
-    if: ${{ always() }}
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     name: Final Results
     needs: [ run-eslint ]
     steps:
       - run: |
           result="${{ needs.run-eslint.result }}"
+          echo ${{fromJSON(needs.changes.outputs.packages)}}
           if [[ $result == "success" || $result == "skipped" ]]; then
             exit 0
           else
