@@ -19,6 +19,7 @@
     <h3>Ecosystem</h3>
     <template v-for="i in [1, 2, 3]" :key="i">
       <div>{{ i }}</div>
+      test
     </template>
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
