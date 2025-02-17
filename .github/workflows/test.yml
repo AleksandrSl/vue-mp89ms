@@ -46,7 +46,7 @@ jobs:
       - run: |
           result="${{ needs.run-eslint.result }}"
           echo ${{needs.changes.outputs.packages[0] != null }}
-          echo ${{needs.changes.outputs.packages[0] }}
+          echo ${{fromJSON(needs.changes.outputs.packages)[0] }}
           if [[ $result == "success" || $result == "skipped" ]]; then
             exit 0
           else
