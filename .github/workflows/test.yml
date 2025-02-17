@@ -35,7 +35,7 @@ jobs:
 
       # Use changes from get-changes.yml output to run ESLint
       - name: Run ESLint
-        run: npm run eslint ${{ matrix.subpackage }}
+        run: npm run lint ${{ matrix.subpackage }}
 
   results:
     if: ${{ always() }}
