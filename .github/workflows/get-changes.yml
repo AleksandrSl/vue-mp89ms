@@ -1,0 +1,24 @@
+name: Checkout and get changes for the PR
+on:
+  workflow_call:
+    outputs:
+      packages:
+        description: "The packages that has been changed"
+        value: ${{ jobs.changes.outputs.packages }}
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          # Name of the filter have to match the plugin folder name exactly
+          filters: |
+            components:
+              - 'src/components/**'
+            test:
+              - 'src/test/**'
