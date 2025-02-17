@@ -27,7 +27,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Specify the required Node version
+          node-version: '20' # Specify the required Node version
 
       # Install dependencies
       - name: Install dependencies
@@ -35,4 +35,19 @@ jobs:
 
       # Use changes from get-changes.yml output to run ESLint
       - name: Run ESLint
-        run: npm run eslint ${{ matrix.subpackage }}
+        run: npm run lint ${{ matrix.subpackage }}
+
+  results:
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    name: Final Results
+    needs: [ run-eslint ]
+    steps:
+      - run: |
+          result="${{ needs.run-eslint.result }}"
+          if [[ $result == "success" || $result == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
+

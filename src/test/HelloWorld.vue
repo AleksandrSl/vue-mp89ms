@@ -1,7 +1,8 @@
 <template>
-  <template v-for="i in [1, 2, 3]">
+  <template v-for="i in [1, 2, 3]" :key="i">
     <div>{{ i }}</div>
   </template>
+  test
 </template>
 
 <script>
