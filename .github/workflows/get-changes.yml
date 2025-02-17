@@ -18,7 +18,7 @@ jobs:
         with:
           # Name of the filter have to match the plugin folder name exactly
           filters: |
-            src/components/components:
+            src/components:
               - 'src/components/**'
             src/test:
               - 'src/test/**'
