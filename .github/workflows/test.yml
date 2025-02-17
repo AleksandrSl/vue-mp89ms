@@ -45,8 +45,8 @@ jobs:
     steps:
       - run: |
           result="${{ needs.run-eslint.result }}"
-          echo ${{ needs.changes.outputs.packages }}
-          echo ${{fromJSON(needs.changes.outputs.packages)[0] == null }}
+          echo "Changed packages: ${{ needs.changes.outputs.packages }}"
+          echo "Has at least one change: ${{fromJSON(needs.changes.outputs.packages)[0] == null }}"
           if [[ $result == "success" || $result == "skipped" || ${{fromJSON(needs.changes.outputs.packages)[0] == null}} ]]; then
             exit 0
           else
