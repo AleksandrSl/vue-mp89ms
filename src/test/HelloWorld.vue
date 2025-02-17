@@ -2,6 +2,7 @@
   <template v-for="i in [1, 2, 3]">
     <div>{{ i }}</div>
   </template>
+  test
 </template>
 
 <script>
