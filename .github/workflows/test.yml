@@ -41,7 +41,7 @@ jobs:
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     name: Final Results
-    needs: [ run-eslint ]
+    needs: [ run-eslint, changes ]
     steps:
       - run: |
           result="${{ needs.run-eslint.result }}"
