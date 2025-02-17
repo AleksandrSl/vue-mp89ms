@@ -17,7 +17,7 @@
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
     <h3>Ecosystem</h3>
-    <template v-for="i in [1, 2, 3]">
+    <template v-for="i in [1, 2, 3]" :key="i">
       <div>{{ i }}</div>
     </template>
     <ul>
