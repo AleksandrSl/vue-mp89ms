@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: changes
     timeout-minutes: 15
+    if: ${{ fromJSON(needs.changes.outputs.packages)[0] != null }}
     strategy:
       fail-fast: false
       matrix:
@@ -47,7 +48,7 @@ jobs:
           result="${{ needs.run-eslint.result }}"
           echo ${{needs.run-eslint}}
           echo "Changed packages: ${{ needs.changes.outputs.packages }}"
-          echo "Has no changes: ${{fromJSON(needs.changes.outputs.packages)[0] == null }}"
+          echo "Has no changes: ${{ fromJSON(needs.changes.outputs.packages)[0] == null }}"
           if [[ $result == "success" || $result == "skipped" || ${{fromJSON(needs.changes.outputs.packages)[0] == null}} ]]; then
             exit 0
           else
