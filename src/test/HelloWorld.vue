@@ -1,5 +1,5 @@
 <template>
-  <template v-for="i in [1, 2, 3]" :key="i">
+  <template v-for="i in [1, 2, 3, 4]">
     <div>{{ i }}</div>
   </template>
   test
